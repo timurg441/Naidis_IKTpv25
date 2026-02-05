@@ -15,7 +15,7 @@ namespace Naidis_IKTpv25
             string tekst = "Tere tulemast C#-i maailma!";
             Console.WriteLine($"Oli loodud muutja tekst, mis võrdub : {tekst}");
             Console.WriteLine("Oli loodud muutja tekst, mis võrdub: {0}", tekst);
-            Console.WriteLine("Mis on sinu nimi?: ");
+            /* Console.WriteLine("Mis on sinu nimi?: ");
             string nimi = Console.ReadLine();
             Console.Write("Kui vana sa oled?: ");
             try
@@ -40,6 +40,13 @@ namespace Naidis_IKTpv25
             {
                 Console.WriteLine(e);
             }
+
+            Random rnd = new Random();
+            int juhuslik_arv = rnd.Next(-5, 25);
+            Console.WriteLine(Naidis_Funktsioonid.Kuu_nimetus(juhuslik_arv));
+            juhuslik_arv = rnd.Next(-5, 25);
+            tekst = Naidis_Funktsioonid.Kuu_nimetus(juhuslik_arv);
+            Console.WriteLine(tekst);
 
         }
     }
