@@ -6,8 +6,8 @@ namespace Naidis_IKTpv25
 {
     public class Osa2_funktsioonid
     {
-
-        public static string Juku(string nimi = "Juku")
+        
+        public static string Juku(string nimi="Juku")
         {
             string otsus = "";
             string vastus = "";
@@ -20,42 +20,42 @@ namespace Naidis_IKTpv25
                 try
                 {
                     vanus = int.Parse(Console.ReadLine());
-                    if (vanus > 0 && vanus < 100)
+                    if (vanus > 0 && vanus<100)
                     {
                         if (vanus < 6)
                         {
-                            pilet = "Sulle on kinopilet tasuta!";
+                            pilet="Sulle on kinopilet tasuta!";
                         }
                         else if (vanus >= 6 && vanus < 14)
                         {
-                            pilet = "Sulle on kinopilet on lastepilet!";
+                            pilet="Sulle on kinopilet on lastepilet!";
                         }
                         else if (vanus >= 14 && vanus < 65)
                         {
-                            pilet = "Sulle on kinopilet täispilet!";
+                            pilet="Sulle on kinopilet täispilet!";
                         }
                         else if (vanus >= 65)
                         {
-                            pilet = "Sulle on kinopilet sooduspilet!";
+                            pilet="Sulle on kinopilet sooduspilet!";
                         }
                     }
-                    else
-                    {
-                        pilet = "Tundmatupilet. Vanus peab olema >0 arv ja <100!";
+                    else 
+                    { 
+                        pilet="Tundmatupilet. Vanus peab olema >0 arv ja <100!";
                     }
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
                 }
-                otsus = $"Lähme kinno! {pilet}";
+                otsus= $"Lähme kinno! {pilet}";
             }
             else
             {
-                otsus = "Ma olen hõivatud";
-            }
-            vastus = $"Tere {nimi}, {otsus}";
-            return vastus;
-        }
+                otsus = "Ma olen hõivatud" ;
+            } 
+            vastus=$"Tere {nimi}, {otsus}";
+            return vastus; 
+        }   
     }
 }
