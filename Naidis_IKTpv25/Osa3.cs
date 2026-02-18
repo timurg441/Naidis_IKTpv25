@@ -1,211 +1,182 @@
 using System;
+using System.Collections.Generic;
 
-public class Osa2_funktsioonud
+public class Osa3
 {
+    class Inimene
+    {
+        public string Nimi;
+        public int Vanus;
+    }
+
     static void Main()
     {
-        Console.WriteLine("TERE TULEMAST\n");
+        Console.WriteLine("1. ARVUDE RUUDUD\n");
 
-        Console.WriteLine("1. JUKU JA KINO");
-        Console.Write("Sisesta oma eesnimi: ");
-        string eesnimi = Console.ReadLine();
+        Console.Write("Sisesta minimaalne arv: ");
+        int min = int.Parse(Console.ReadLine());
 
-        string tulemus = Juku(eesnimi);
-        Console.WriteLine(tulemus);
+        Console.Write("Sisesta maksimaalne arv: ");
+        int max = int.Parse(Console.ReadLine());
 
-        Console.WriteLine("\n2. PINGINAABRID");
-        Console.Write("Sisesta esimese inimese nimi: ");
-        string nimi1 = Console.ReadLine();
+        Random rand = new Random();
+        int a = rand.Next(min, max + 1);
+        int b = rand.Next(min, max + 1);
 
-        Console.Write("Sisesta teise inimese nimi: ");
-        string nimi2 = Console.ReadLine();
+        Console.WriteLine($"\nJuhuslikud arvud: {a} ja {b}");
 
-        Console.WriteLine($"{nimi1} ja {nimi2} on tänasest pinginaabrid!");
-
-        Console.WriteLine("\n3. TOA REMONT");
-        Console.Write("Sisesta toa pikkus (meetrites): ");
-        double pikkus = double.Parse(Console.ReadLine());
-
-        Console.Write("Sisesta toa laius (meetrites): ");
-        double laius = double.Parse(Console.ReadLine());
-
-        double pindala = pikkus * laius;
-        Console.WriteLine($"Toa põranda pindala on {pindala} m²");
-
-        Console.Write("Kas soovid remonti teha? (jah/ei): ");
-        string remont = Console.ReadLine();
-
-        if (remont.ToLower() == "jah")
+        int algus, lõpp;
+        if (a < b)
         {
-            Console.Write("Kui palju maksab 1 m2 põrandakatet? ");
-            double hind = double.Parse(Console.ReadLine());
-
-            double koguhind = pindala * hind;
-            Console.WriteLine($"Põranda vahetamise hind on {koguhind} eurot");
+            algus = a;
+            lõpp = b;
         }
         else
         {
-            Console.WriteLine("Remonti ei tehta");
+            algus = b;
+            lõpp = a;
         }
 
-        Console.WriteLine("\n4. SOODUSTUS");
-        Console.Write("Sisesta soodushind (pärast 30% allahindlust): ");
-        double soodushind = double.Parse(Console.ReadLine());
+        Console.WriteLine($"\nArvude ruudud {algus} kuni {lõpp}:");
 
-        double alghind = soodushind / 70 * 100;
-        Console.WriteLine($"Alghind oli {alghind} eurot");
-
-        Console.WriteLine("\n5. TEMPERATUUR");
-        Console.Write("Sisesta temperatuur (kraadides): ");
-        double temp = double.Parse(Console.ReadLine());
-
-        if (temp >= 18)
+        int number = algus;
+        while (number <= lõpp)
         {
-            Console.WriteLine("Temperatuur on üle 18 kraadi - hea toasoojus");
-        }
-        else
-        {
-            Console.WriteLine("Temperatuur on alla 18 kraadi - võiks olla soojem");
+            Console.WriteLine(number + " ruudus = " + (number * number));
+            number++;
         }
 
-        Console.WriteLine("\n6. PIKKUSE HINNANG");
-        Console.Write("Sisesta oma pikkus sentimeetrites: ");
-        int pikkus2 = int.Parse(Console.ReadLine());
+        Console.WriteLine("\n\n2. VIIE ARVU ANALÜÜS\n");
 
-        if (pikkus2 < 150)
+        double[] arvud = new double[5];
+
+        int indeks = 0;
+        while (indeks < 5)
         {
-            Console.WriteLine("Sa oled lühike");
-        }
-        else if (pikkus2 >= 150 && pikkus2 < 170)
-        {
-            Console.WriteLine("Sa oled keskmist kasvu");
-        }
-        else
-        {
-            Console.WriteLine("Sa oled pikk");
+            Console.Write("Arv " + (indeks + 1) + ": ");
+            arvud[indeks] = double.Parse(Console.ReadLine());
+            indeks++;
         }
 
-        Console.WriteLine("\n7. PIKKUS JA SUGU");
-        Console.Write("Sisesta oma pikkus sentimeetrites: ");
-        int pikkus3 = int.Parse(Console.ReadLine());
+        double summa = 0;
+        double korrutis = 1;
+        indeks = 0;
 
-        Console.Write("Sisesta oma sugu (M/N): ");
-        string sugu = Console.ReadLine();
-
-        if (sugu.ToUpper() == "M")
+        while (indeks < 5)
         {
-            Console.WriteLine("MEHED");
-            if (pikkus3 < 165)
-            {
-                Console.WriteLine("Sa oled lühike mees");
-            }
-            else if (pikkus3 >= 165 && pikkus3 < 180)
-            {
-                Console.WriteLine("Sa oled keskmist kasvu mees");
-            }
-            else
-            {
-                Console.WriteLine("Sa oled pikk mees");
-            }
-        }
-        else if (sugu.ToUpper() == "N")
-        {
-            Console.WriteLine("NAISED");
-            if (pikkus3 < 155)
-            {
-                Console.WriteLine("Sa oled lühike naine");
-            }
-            else if (pikkus3 >= 155 && pikkus3 < 170)
-            {
-                Console.WriteLine("Sa oled keskmist kasvu naine");
-            }
-            else
-            {
-                Console.WriteLine("Sa oled pikk naine");
-            }
-        }
-        else
-        {
-            Console.WriteLine("Tundmatu sugu");
+            summa = summa + arvud[indeks];
+            korrutis = korrutis * arvud[indeks];
+            indeks++;
         }
 
-        Console.WriteLine("\n8. POEOST");
-        double kogusumma = 0;
-        string ostetud = "";
+        double keskmine = summa / 5;
 
-        Console.Write("Kas soovid osta piima? (jah/ei): ");
-        string piim = Console.ReadLine();
-        if (piim.ToLower() == "jah")
+        Console.WriteLine("\nTULEMUS:");
+        Console.WriteLine("Summa: " + summa);
+        Console.WriteLine("Keskmine: " + keskmine);
+        Console.WriteLine("Korrutis: " + korrutis);
+
+        Console.WriteLine("\n\n3. NIMED JA VANUSED\n");
+
+        List<Inimene> inimesed = new List<Inimene>();
+
+        int i = 0;
+        while (i < 5)
         {
-            kogusumma = kogusumma + 1.20;
-            ostetud = ostetud + "piim (1.20€), ";
+            Console.WriteLine("\nSisesta " + (i + 1) + ". inimese andmed:");
+
+            Console.Write("Nimi: ");
+            string nimi = Console.ReadLine();
+
+            Console.Write("Vanus: ");
+            int vanus = int.Parse(Console.ReadLine());
+
+            Inimene uus = new Inimene();
+            uus.Nimi = nimi;
+            uus.Vanus = vanus;
+
+            inimesed.Add(uus);
+
+            i++;
         }
 
-        Console.Write("Kas soovid osta saia? (jah/ei): ");
-        string sai = Console.ReadLine();
-        if (sai.ToLower() == "jah")
-        {
-            kogusumma = kogusumma + 1.50;
-            ostetud = ostetud + "sai (1.50€), ";
-        }
+        var tulemus = Statistika(inimesed);
 
-        Console.Write("Kas soovid osta leiba? (jah/ei): ");
-        string leib = Console.ReadLine();
-        if (leib.ToLower() == "jah")
-        {
-            kogusumma = kogusumma + 2.00;
-            ostetud = ostetud + "leib (2.00€), ";
-        }
+        Console.WriteLine("\nSTATISTIKA");
+        Console.WriteLine("Vanuste summa: " + tulemus.Item1);
+        Console.WriteLine("Keskmine vanus: " + tulemus.Item2);
+        Console.WriteLine("Vanim: " + tulemus.Item3.Nimi + " (" + tulemus.Item3.Vanus + ")");
+        Console.WriteLine("Noorim: " + tulemus.Item4.Nimi + " (" + tulemus.Item4.Vanus + ")");
 
-        if (kogusumma > 0)
-        {
-            Console.WriteLine($"Ostetud: {ostetud}");
-            Console.WriteLine($"Kogu summa: {kogusumma} eurot");
-        }
-        else
-        {
-            Console.WriteLine("Sa ei ostnud midagi");
-        }
+        Console.WriteLine("\n\n4. OSTA ELEVANT ÄRA!\n");
+
+        KuniMärksõnani("elevant", "Osta elevant ära!");
 
         Console.WriteLine("\nPROGRAMM LÕPPES");
         Console.ReadLine();
     }
 
-    public static string Juku(string nimi)
+    static Tuple<int, double, Inimene, Inimene> Statistika(List<Inimene> inimesed)
     {
-        if (nimi.ToLower() == "juku")
+        int summa = 0;
+
+        Inimene vanim = inimesed[0];
+        Inimene noorim = inimesed[0];
+
+        int i = 0;
+        while (i < inimesed.Count)
         {
-            Console.Write("Kui vana sa oled? ");
-            int vanus = int.Parse(Console.ReadLine());
+            Inimene inimene = inimesed[i];
 
-            string pilet;
+            summa = summa + inimene.Vanus;
 
-            if (vanus < 0 || vanus > 100)
+            if (inimene.Vanus > vanim.Vanus)
             {
-                pilet = "Viga andmetega! Vanus peab olema 0-100";
-            }
-            else if (vanus < 6)
-            {
-                pilet = "Sulle on kinopilet TASUTA!";
-            }
-            else if (vanus >= 6 && vanus <= 14)
-            {
-                pilet = "Sulle on LASTEPILET";
-            }
-            else if (vanus >= 15 && vanus <= 65)
-            {
-                pilet = "Sulle on TÄISPILET";
-            }
-            else
-            {
-                pilet = "Sulle on SOODUSPILET";
+                vanim = inimene;
             }
 
-            return "Tere Juku! Lähme kinno! " + pilet;
+            if (inimene.Vanus < noorim.Vanus)
+            {
+                noorim = inimene;
+            }
+
+            i++;
         }
-        else
+
+        double keskmine = (double)summa / inimesed.Count;
+
+        return Tuple.Create(summa, keskmine, vanim, noorim);
+    }
+
+    static void KuniMärksõnani(string märksõna, string fraas)
+    {
+        List<string> sisestused = new List<string>();
+
+        string sisend = "";
+
+        Console.WriteLine("Kirjuta midagi. Kui kirjutad '" + märksõna + "', siis lõpetab.");
+        Console.WriteLine();
+
+        while (sisend != märksõna)
         {
-            return "Tere " + nimi + ", täna mind kodus pole!";
+            Console.Write(fraas + " ");
+            sisend = Console.ReadLine();
+
+            if (sisend != märksõna)
+            {
+                sisestused.Add(sisend);
+            }
         }
+
+        Console.WriteLine("\nSISESTASID NEED ASJAD");
+
+        int i = 0;
+        while (i < sisestused.Count)
+        {
+            Console.WriteLine((i + 1) + ". " + sisestused[i]);
+            i++;
+        }
+
+        Console.WriteLine("\nAitäh! Lõpetasid sõnaga '" + märksõna + "'");
     }
 }
