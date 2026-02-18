@@ -1,6 +1,6 @@
 using System;
 
-class Programm
+public class Osa2_funktsioonud
 {
     static void Main()
     {
