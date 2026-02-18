@@ -1,45 +1,65 @@
 using System;
 
-public class Programm
+class Programm
 {
-    public static void Main()
+    static void Main()
     {
-        Console.WriteLine("Programm numbrite ruutude jaoks");
-        Console.Write("Sisestage minimaalne arv: ");
+        Console.WriteLine("ÜLESANNE: Arvude ruudud\n");
+
+        Console.Write("Sisesta minimaalne arv: ");
         int min = int.Parse(Console.ReadLine());
 
-        Console.Write("Sisestage maksimaalne arv: ");
+        Console.Write("Sisesta maksimaalne arv: ");
         int max = int.Parse(Console.ReadLine());
 
         Random rand = new Random();
+        int a = rand.Next(min, max + 1);
+        int b = rand.Next(min, max + 1);
 
-        int arv1 = rand.Next(min, max + 1);
-        int arv2 = rand.Next(min, max + 1);
+        Console.WriteLine($"\nJuhuslikud arvud: {a} ja {b}");
 
-        Console.WriteLine($"\nJuhuslikud numbrid: {arv1} и {arv2}");
+        int algus, lõpp;
+        if (a < b) { algus = a; lõpp = b; }
+        else { algus = b; lõpp = a; }
 
-        int vaiksem;
-        int suurem;
+        Console.WriteLine($"\nArvude ruudud {algus} kuni {lõpp}:");
 
-        if (arv1 < arv2)
+        int number = algus;
+        while (number <= lõpp)
         {
-            vaiksem = arv1;
-            suurem = arv2;
-        }
-        else
-        {
-            vaiksem = arv2;
-            suurem = arv1;
+            Console.WriteLine(number + " ruudus = " + (number * number));
+            number++;
         }
 
-        Console.WriteLine($"\nNumbrite ruudud alates {vaiksem} kuni {suurem}:");
+        Console.WriteLine("\n\nViie arvu analüüs\n");
 
-        int praegune = vaiksem;
-        while (praegune <= suurem)
+        double[] arvud = new double[5];
+
+        int indeks = 0;
+        while (indeks < 5)
         {
-            int ruut = praegune * praegune;
-            Console.WriteLine($"{praegune} * {praegune} = {ruut}");
-            praegune++;
+            Console.Write("Arv " + (indeks + 1) + ": ");
+            arvud[indeks] = double.Parse(Console.ReadLine());
+            indeks++;
         }
+
+        double summa = 0;
+        double korrutis = 1;
+        indeks = 0;
+
+        while (indeks < 5)
+        {
+            summa = summa + arvud[indeks];
+            korrutis = korrutis * arvud[indeks];
+            indeks++;
+        }
+
+        double keskmine = summa / 5;
+
+        Console.WriteLine("\nTULEMUS");
+        Console.WriteLine("Summa: " + summa);
+        Console.WriteLine("Keskmine: " + keskmine);
+        Console.WriteLine("Korrutis: " + korrutis);
     }
 }
+
