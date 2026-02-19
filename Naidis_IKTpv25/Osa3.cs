@@ -1,64 +1,33 @@
+
 using System;
 using System.Collections.Generic;
+using System.Text;
 
-class Programm
+namespace Naidis_IKTpv25
 {
-    class Inimene
+    public class Osa3
     {
-        public string Nimi;
-        public int Vanus;
+        public static Tuple<double, double, double> AnalüüsiArve(double[] arvud)
+        {
+            double summa = arvud.Sum();
+            double keskmine = arvud.Average();
+            double korrutis = 1;
+            foreach (double arv in arvud)
+            {
+                korrutis *= arv;
+            }
+            return Tuple.Create(summa, keskmine, korrutis);
+        }
+        public static (double summa, double keskmine, double korrutis) AnalüüsiArve1(double[] arvud)
+        {
+            double summa = arvud.Sum();
+            double keskmine = arvud.Average();
+            double korrutis = 1;
+            foreach (double arv in arvud)
+            {
+                korrutis *= arv;
+            }
+            return (summa, keskmine, korrutis);
+        }
     }
-
-    static void Main()
-    {
-        Console.WriteLine("1. ARVUDE RUUDUD");
-
-        Console.Write("Sisesta väikseim arv: ");
-        int min = int.Parse(Console.ReadLine());
-
-        Console.Write("Sisesta suurim arv: ");
-        int max = int.Parse(Console.ReadLine());
-
-        Random juhuslik = new Random();
-        int esimine = juhuslik.Next(min, max + 1);
-        int teine = juhuslik.Next(min, max + 1);
-
-        Console.WriteLine("Juhuslikud arvud on: " + esimine + " ja " + teine);
-
-        int vaiksem;
-        int suurem;
-
-        if (esimine < teine)
-        {
-            vaiksem = esimine;
-            suurem = teine;
-        }
-        else
-        {
-            vaiksem = teine;
-            suurem = esimine;
-        }
-
-        Console.WriteLine("Arvud vahemikus " + vaiksem + " kuni " + suurem + ":");
-
-        int praegune = vaiksem;
-        while (praegune <= suurem)
-        {
-            int ruut = praegune * praegune;
-            Console.WriteLine(praegune + " ruudus on " + ruut);
-            praegune++;
-        }
-
-        Console.WriteLine("\n2. VIIE ARVU ANALÜÜS");
-
-        double[] minuArvud = new double[5];
-
-        int loendur = 0;
-        while (loendur < 5)
-        {
-            Console.Write("Sisesta " + (loendur + 1) + ". arv: ");
-            minuArvud[loendur] = double.Parse(Console.ReadLine());
-            loendur++;
-        }
-
-
+}
