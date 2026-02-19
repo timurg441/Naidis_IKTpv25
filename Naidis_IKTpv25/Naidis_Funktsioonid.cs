@@ -1,4 +1,5 @@
-﻿using System;
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -61,7 +62,7 @@ namespace Naidis_IKTpv25
             return hoo;
         }
 
-        
+
         public static void Muuda_element_massiivis(int[] arvud)
         {
             Console.WriteLine("Kuhu: ");
@@ -83,6 +84,22 @@ namespace Naidis_IKTpv25
                 try
                 {
                     arvud[i] = int.Parse(Console.ReadLine());
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+            return arvud;
+        }
+        public static double[] Täida_massiiv_double(double[] arvud)
+        {
+            for (int i = 0; i < arvud.Length; i++)
+            {
+                Console.Write($"Sisesta {i + 1}. arv: ");
+                try
+                {
+                    arvud[i] = Convert.ToDouble(Console.ReadLine());
                 }
                 catch (Exception e)
                 {
