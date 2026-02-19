@@ -1,4 +1,5 @@
-﻿using System;
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,32 +8,43 @@ namespace Naidis_IKTpv25
     public class StartPage
     {
         public static void Main(string[] args)
+
         {
+            //double[] arvud = { 1.5, 2.3, 3.7, 4.1, 5.6 };
+            double[] arvud1 = Naidis_funktsioonid.Täida_massiiv_double(new double[5]);
+            var tulemus = Osa3.AnalüüsiArve(arvud1);
+            Console.WriteLine($"Summa: {tulemus.Item1}, Keskmine: {tulemus.Item2}, Korrutis: {tulemus.Item3}");
+
+            var (summa, keskmine, korrutis) = Osa3.AnalüüsiArve1(arvud1);
+            Console.WriteLine($"Summa: {summa}, Keskmine: {keskmine}, Korrutis: {korrutis}");
+
+
+
             Console.WriteLine("3. Osa. Kordused ja Listid, massivid");
             Console.WriteLine("For:");
-            for (int i=0; i<10;i++)
+            for (int i = 0; i < 10; i++)
             {
-                Console.WriteLine($"Tere, {i+1}!");
+                Console.WriteLine($"Tere, {i + 1}!");
             }
             Console.WriteLine("While:");
-            int j=0;
-            while (j<10)
+            int j = 0;
+            while (j < 10)
             {
-                Console.WriteLine($"Tere, {j+1}!");
+                Console.WriteLine($"Tere, {j + 1}!");
                 j++;
             }
             Console.WriteLine("Do:");
             do
             {
-                Console.WriteLine($"Tere, {11-j}!");
+                Console.WriteLine($"Tere, {11 - j}!");
                 j--;
             }
-            while (j!=0);
+            while (j != 0);
             int[] arvud = new int[5];
-            Console.WriteLine("Täisarvude massiiv:");            
-            arvud= Naidis_funktsioonid.Täida_massiiv(arvud);
+            Console.WriteLine("Täisarvude massiiv:");
+            arvud = Naidis_funktsioonid.Täida_massiiv(arvud);
             Naidis_funktsioonid.Massiivide_kuvamine(arvud);
-            
+
             //Küsi mis positsioonil muuda element ja mis väärtuseks, muuda element ja kuva massiiv
             Naidis_funktsioonid.Muuda_element_massiivis(arvud);
 
