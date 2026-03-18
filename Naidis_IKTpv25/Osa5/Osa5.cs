@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 
-class Program
+class Osa5
 {
     static void Main()
     {
@@ -12,88 +12,124 @@ class Program
         nimed.Add("Juku");
 
         if (nimed.Contains("Mati"))
-        {
             Console.WriteLine("Mati on olemas");
-        }
 
-        Console.WriteLine("Nimesid kokku: " + nimed.Count);
+        Console.WriteLine("Nimesid: " + nimed.Count);
 
         nimed.Insert(1, "Sass");
 
-        Console.WriteLine("Mati asukoht: " + nimed.IndexOf("Mati"));
-
-        Console.WriteLine("Mari asukoht: " + nimed.IndexOf("Mari"));
+        Console.WriteLine("Mati indeks: " + nimed.IndexOf("Mati"));
 
         Console.WriteLine("Kõik nimed:");
         foreach (string nimi in nimed)
-        {
             Console.WriteLine(nimi);
-        }
     }
 }
 
 using System;
 
-class Program
+class Osa5
 {
     static void Main()
     {
-        Tuple<float, char> route = new Tuple<float, char>(2.5f, 'N');
+        Tuple<float, char> teekond = new Tuple<float, char>(2.5f, 'N');
 
-        Console.WriteLine($"Vahemaa: {route.Item1}");
-        Console.WriteLine($"Suund: {route.Item2}");
+        Console.WriteLine("Vahemaa: " + teekond.Item1);
+        Console.WriteLine("Suund: " + teekond.Item2);
 
-        var inimene = new Tuple<string, int, string>("Jaan", 25, "Tallinn");
-        Console.WriteLine($"Nimi: {inimene.Item1}, Vanus: {inimene.Item2}, Linn: {inimene.Item3}");
-
-        var toode = new Tuple<string, double, int>("Piim", 0.89, 10);
-        Console.WriteLine($"Toode: {toode.Item1}, Hind: {toode.Item2}, Kogus: {toode.Item3}");
+        Tuple<string, int> inimene = new Tuple<string, int>("Jaan", 25);
+        Console.WriteLine("Nimi: " + inimene.Item1);
+        Console.WriteLine("Vanus: " + inimene.Item2);
     }
 }
 
 using System;
 using System.Collections.Generic;
 
-class Person
+class Osa5
 {
-    public string Name { get; set; }
+    static void Main()
+    {
+        List<string> nimed = new List<string>();
+
+        nimed.Add("Kadi");
+        nimed.Add("Mirje");
+        nimed.Add("Lisa");
+
+        Console.WriteLine("Kõik nimed:");
+        foreach (string nimi in nimed)
+            Console.WriteLine(nimi);
+
+        Console.WriteLine("Kokku: " + nimed.Count);
+
+        Console.WriteLine("Esimene: " + nimed[0]);
+
+        nimed.Remove("Lisa");
+        Console.WriteLine("Pärast Lisa eemaldamist:");
+        foreach (string nimi in nimed)
+            Console.WriteLine(nimi);
+    }
 }
+
+using System;
+using System.Collections.Generic;
 
 class Program
 {
     static void Main()
     {
-        List<Person> people = new List<Person>(); 
+        LinkedList<int> numbrid = new LinkedList<int>();
 
-        Person inimene1 = new Person();
-        inimene1.Name = "Kadi";
+        numbrid.AddLast(5);
+        numbrid.AddLast(3);
+        numbrid.AddFirst(0);
 
-        Person inimene2 = new Person();
-        inimene2.Name = "Mirje";
+        Console.WriteLine("Arvud:");
+        foreach (int arv in numbrid)
+            Console.Write(arv + " ");
 
-        people.Add(inimene1);
-        people.Add(inimene2);
+        Console.WriteLine();
 
-        foreach (Person p in people)
-        {
-            Console.WriteLine(p.Name);
-        }
+        numbrid.RemoveFirst();
+        Console.WriteLine("Pärast esimese eemaldamist:");
+        foreach (int arv in numbrid)
+            Console.Write(arv + " ");
 
-        List<string> names = new List<string>();
-        names.Add("Anna");
-        names.Add("Maria");
-        names.Add("Katrin");
+        Console.WriteLine();
 
-        Console.WriteLine("\nNimed:");
-        foreach (string nimi in names)
-        {
-            Console.WriteLine(nimi);
-        }
+        numbrid.AddLast(555);
+        Console.WriteLine("Pärast 555 lisamist:");
+        foreach (int arv in numbrid)
+            Console.Write(arv + " ");
+    }
+}
 
-        Console.WriteLine("\nEsimene nimi: " + names[0]);
-        Console.WriteLine("Mitu nime: " + names.Count);
+using System;
+using System.Collections.Generic;
 
-        names.Remove("Anna");
-        Console.WriteLine("Pärast Anna eemaldamist: " + names.Count);
+class Program
+{
+    static void Main()
+    {
+        Dictionary<int, string> riigid = new Dictionary<int, string>();
+
+        riigid.Add(1, "Hiina");
+        riigid.Add(2, "Eesti");
+        riigid.Add(3, "Itaalia");
+
+        Console.WriteLine("Riigid:");
+        foreach (var paar in riigid)
+            Console.WriteLine(paar.Key + " - " + paar.Value);
+
+        Console.WriteLine("Võti 2: " + riigid[2]);
+
+        riigid[2] = "Eestimaa";
+        Console.WriteLine("Uus: " + riigid[2]);
+
+        riigid.Remove(3);
+
+        Console.WriteLine("Pärast eemaldamist:");
+        foreach (var paar in riigid)
+            Console.WriteLine(paar.Key + " - " + paar.Value);
     }
 }
