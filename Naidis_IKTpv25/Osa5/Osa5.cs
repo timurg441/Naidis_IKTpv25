@@ -63,7 +63,7 @@ class Program
 {
     static void Main()
     {
-        List<Person> people = new List<Person>();
+        List<Person> people = new List<Person>(); 
 
         Person inimene1 = new Person();
         inimene1.Name = "Kadi";
