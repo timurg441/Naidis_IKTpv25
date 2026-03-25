@@ -1,37 +1,34 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
-class Osa5
+class Program
 {
     static void Main()
     {
-        ArrayList nimed = new ArrayList();
+        Console.WriteLine(" ArrayList ");
+        ArrayList nimedArrayList = new ArrayList();
 
-        nimed.Add("Kati");
-        nimed.Add("Mati");
-        nimed.Add("Juku");
+        nimedArrayList.Add("Kati");
+        nimedArrayList.Add("Mati");
+        nimedArrayList.Add("Juku");
 
-        if (nimed.Contains("Mati"))
+        if (nimedArrayList.Contains("Mati"))
             Console.WriteLine("Mati on olemas");
 
-        Console.WriteLine("Nimesid: " + nimed.Count);
+        Console.WriteLine("Nimesid: " + nimedArrayList.Count);
 
-        nimed.Insert(1, "Sass");
+        nimedArrayList.Insert(1, "Sass");
 
-        Console.WriteLine("Mati indeks: " + nimed.IndexOf("Mati"));
+        Console.WriteLine("Mati indeks: " + nimedArrayList.IndexOf("Mati"));
 
         Console.WriteLine("Kõik nimed:");
-        foreach (string nimi in nimed)
+        foreach (string nimi in nimedArrayList)
             Console.WriteLine(nimi);
-    }
-}
 
-using System;
+        Console.WriteLine();
 
-class Osa5
-{
-    static void Main()
-    {
+        Console.WriteLine("Tuple");
         Tuple<float, char> teekond = new Tuple<float, char>(2.5f, 'N');
 
         Console.WriteLine("Vahemaa: " + teekond.Item1);
@@ -40,44 +37,31 @@ class Osa5
         Tuple<string, int> inimene = new Tuple<string, int>("Jaan", 25);
         Console.WriteLine("Nimi: " + inimene.Item1);
         Console.WriteLine("Vanus: " + inimene.Item2);
-    }
-}
 
-using System;
-using System.Collections.Generic;
+        Console.WriteLine();
 
-class Osa5
-{
-    static void Main()
-    {
-        List<string> nimed = new List<string>();
+        Console.WriteLine("List<string>");
+        List<string> nimedList = new List<string>();
 
-        nimed.Add("Kadi");
-        nimed.Add("Mirje");
-        nimed.Add("Lisa");
+        nimedList.Add("Kadi");
+        nimedList.Add("Mirje");
+        nimedList.Add("Lisa");
 
         Console.WriteLine("Kõik nimed:");
-        foreach (string nimi in nimed)
+        foreach (string nimi in nimedList)
             Console.WriteLine(nimi);
 
-        Console.WriteLine("Kokku: " + nimed.Count);
+        Console.WriteLine("Kokku: " + nimedList.Count);
+        Console.WriteLine("Esimene: " + nimedList[0]);
 
-        Console.WriteLine("Esimene: " + nimed[0]);
-
-        nimed.Remove("Lisa");
+        nimedList.Remove("Lisa");
         Console.WriteLine("Pärast Lisa eemaldamist:");
-        foreach (string nimi in nimed)
+        foreach (string nimi in nimedList)
             Console.WriteLine(nimi);
-    }
-}
 
-using System;
-using System.Collections.Generic;
+        Console.WriteLine();
 
-class Program
-{
-    static void Main()
-    {
+        Console.WriteLine("LinkedList<int>");
         LinkedList<int> numbrid = new LinkedList<int>();
 
         numbrid.AddLast(5);
@@ -87,30 +71,21 @@ class Program
         Console.WriteLine("Arvud:");
         foreach (int arv in numbrid)
             Console.Write(arv + " ");
-
         Console.WriteLine();
 
         numbrid.RemoveFirst();
         Console.WriteLine("Pärast esimese eemaldamist:");
         foreach (int arv in numbrid)
             Console.Write(arv + " ");
-
         Console.WriteLine();
 
         numbrid.AddLast(555);
         Console.WriteLine("Pärast 555 lisamist:");
         foreach (int arv in numbrid)
             Console.Write(arv + " ");
-    }
-}
+        Console.WriteLine("\n");
 
-using System;
-using System.Collections.Generic;
-
-class Program
-{
-    static void Main()
-    {
+        Console.WriteLine("=== Dictionary<int, string> пример ===");
         Dictionary<int, string> riigid = new Dictionary<int, string>();
 
         riigid.Add(1, "Hiina");
@@ -127,7 +102,6 @@ class Program
         Console.WriteLine("Uus: " + riigid[2]);
 
         riigid.Remove(3);
-
         Console.WriteLine("Pärast eemaldamist:");
         foreach (var paar in riigid)
             Console.WriteLine(paar.Key + " - " + paar.Value);
